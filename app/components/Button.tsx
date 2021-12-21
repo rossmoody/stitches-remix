@@ -1,10 +1,12 @@
-import { styled, darkTheme } from "../../stitches.config";
+import { styled, darkTheme } from '../../stitches.config'
 
-// Unnecessarily passing darkTheme into styled component.
-// If not, the darkTheme variables aren't compiled to root.
+export const Button = styled('button', {
+  padding: '24px',
+  color: '$bgBody',
+  backgroundColor: '$text',
+  [`${darkTheme}`]: {},
+})
 
-export const Button = styled("button", darkTheme, {
-  padding: "24px",
-  color: "$bgBody",
-  backgroundColor: "$text",
-});
+// Need to pass dark theme into Button component or the dark
+// theme variables aren't compiled and added to :root. This isn't
+// normally necessary.

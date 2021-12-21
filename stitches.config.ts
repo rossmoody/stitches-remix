@@ -19,7 +19,7 @@ export const darkTheme = createTheme("dark", {
   },
 });
 
-export const globalStyles = globalCss({
+globalCss({
   body: {
     color: "$text",
     backgroundColor: "$bgBody",
@@ -28,4 +28,4 @@ export const globalStyles = globalCss({
   a: {
     color: "$anchor",
   },
-});
+})();

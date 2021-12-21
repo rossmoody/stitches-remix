@@ -1,4 +1,4 @@
-import { Outlet, Link } from "remix";
+import { Outlet, Link } from 'remix'
 
 export default function Pages() {
   return (
@@ -15,5 +15,5 @@ export default function Pages() {
 
       <Outlet />
     </div>
-  );
+  )
 }

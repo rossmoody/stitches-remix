@@ -1,7 +1,7 @@
-import { Link, useParams } from "remix";
+import { Link, useParams } from 'remix'
 
 export default function Hello() {
-  const { id } = useParams();
+  const { id } = useParams()
 
   return (
     <div>
@@ -15,5 +15,5 @@ export default function Hello() {
         </li>
       </ul>
     </div>
-  );
+  )
 }

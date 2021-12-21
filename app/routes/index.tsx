@@ -1,17 +1,17 @@
-import { Button } from "~/components/Button";
-import { ActionFunction, Form, redirect, Link } from "remix";
-import { colorSchemeCookie, getColorScheme } from "../cookies";
+import { Button } from '~/components/Button'
+import { ActionFunction, Form, redirect, Link } from 'remix'
+import { colorSchemeCookie, getColorScheme } from '../cookies'
 
 export const action: ActionFunction = async ({ request }) => {
-  const currentTheme = await getColorScheme(request);
-  const newTheme = currentTheme === "light" ? "dark" : "light";
+  const currentColorScheme = await getColorScheme(request)
+  const newColorScheme = currentColorScheme === 'light' ? 'dark' : 'light'
 
   return redirect(request.url, {
     headers: {
-      "Set-Cookie": await colorSchemeCookie.serialize(newTheme),
+      'Set-Cookie': await colorSchemeCookie.serialize(newColorScheme),
     },
-  });
-};
+  })
+}
 
 export default function Index() {
   return (
@@ -32,5 +32,5 @@ export default function Index() {
         </li>
       </ul>
     </div>
-  );
+  )
 }

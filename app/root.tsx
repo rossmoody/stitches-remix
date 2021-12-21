@@ -9,31 +9,23 @@ import {
   useLoaderData,
   HeadersFunction,
   MetaFunction,
-} from "remix";
-import { getColorScheme } from "./cookies";
-import { globalStyles } from "../stitches.config";
+} from 'remix'
+import { getColorScheme } from './cookies'
 
 export const meta: MetaFunction = () => ({
-  title: "Stitches Theme Example",
-});
+  title: 'Stitches Theme Example',
+})
 
 export const headers: HeadersFunction = () => ({
-  "Accept-CH": "Sec-CH-Prefers-Color-Scheme",
-});
+  'Accept-CH': 'Sec-CH-Prefers-Color-Scheme',
+})
 
-export const loader: LoaderFunction = async ({ request }) => {
-  const userSelectedColorScheme = await getColorScheme(request);
-  const systemPreferredColorScheme = request.headers.get(
-    "Sec-CH-Prefers-Color-Scheme"
-  );
-
-  return userSelectedColorScheme ?? systemPreferredColorScheme;
-};
+export const loader: LoaderFunction = async ({ request }) => ({
+  colorScheme: await getColorScheme(request),
+})
 
 export default function App() {
-  globalStyles();
-
-  const colorScheme = useLoaderData();
+  const { colorScheme } = useLoaderData()
 
   return (
     <html lang="en">
@@ -47,8 +39,8 @@ export default function App() {
         <Outlet />
         <ScrollRestoration />
         <Scripts />
-        {process.env.NODE_ENV === "development" && <LiveReload />}
+        {process.env.NODE_ENV === 'development' && <LiveReload />}
       </body>
     </html>
-  );
+  )
 }
