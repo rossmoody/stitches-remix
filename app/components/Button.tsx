@@ -1,20 +1,10 @@
 import { styled, darkTheme } from "../../stitches.config";
 
-export const Button = styled("button", {
+// Unnecessarily passing darkTheme into styled component.
+// If not, the darkTheme variables aren't compiled to root.
+
+export const Button = styled("button", darkTheme, {
   padding: "24px",
-  color: "black",
-  backgroundColor: "lightgrey",
-
-  "&:hover": {
-    background: "grey",
-  },
-
-  [`.${darkTheme} &`]: {
-    color: "white",
-    backgroundColor: "black",
-
-    "&:hover": {
-      background: "darkgrey",
-    },
-  },
+  color: "$bgBody",
+  backgroundColor: "$text",
 });
