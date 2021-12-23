@@ -4,7 +4,10 @@ import { colorSchemeCookie, getColorScheme } from '../cookies'
 
 export const action: ActionFunction = async ({ request }) => {
   const currentColorScheme = await getColorScheme(request)
-  const newColorScheme = currentColorScheme === null || 'light' ? 'dark' : 'light'
+  const newColorScheme =
+        currentColorScheme === 'light' || currentColorScheme === null
+            ? 'dark'
+            : 'light'
 
   return redirect(request.url, {
     headers: {
