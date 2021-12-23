@@ -11,5 +11,5 @@ export const getColorScheme = async (request: Request) => {
     'Sec-CH-Prefers-Color-Scheme'
   )
 
-  return userSelectedColorScheme ?? systemPreferredColorScheme
+  return userSelectedColorScheme ?? systemPreferredColorScheme ?? 'light'
 }
